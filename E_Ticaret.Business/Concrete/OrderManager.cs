@@ -1,0 +1,27 @@
+﻿using E_Ticaret.Business.Abstarct;
+using E_Ticaret.Entities.Models;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using E_Ticaret.DataAccess.Abstract;
+
+namespace E_Ticaret.Business.Concrete
+{
+    public class OrderManager : IOrderService
+    {
+        private IOrderDal _orderDal;
+        public OrderManager(IOrderDal orderDal)
+        {
+            _orderDal = orderDal;
+        }
+        public void Create(Order entity)
+        {
+            _orderDal.Create(entity);
+        }
+
+        public List<Order> GetOrders(string userId)
+        {
+            return _orderDal.GetOrders(userId);
+        }
+    }
+}
